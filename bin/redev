@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+
+var express = require('express');
+var webpack = require('webpack');
+var WebpackDevServer = require('webpack-dev-server');
+var path = require('path');
+
+var port = process.env.PORT || 4000;
+var target = process.env.TARGET;
+var contentBase = target ? {target: target} : void 0;
+var cwd = process.env.REDEV_ROOT || path.resolve(process.cwd(), '..');
+var config;
+try {
+  config = require(path.join(cwd, 'webpack.config'));
+} catch (e) {
+  config = require(path.resolve(__dirname, '../webpack.config'))(cwd, port);
+}
+
+var compiler = webpack(config);
+/*
+compiler.plugin('done', function (stat) {
+  console.log(stat.compilation.fileDependencies.filter(function (f) {
+    return f.match(/\.css$/i);
+  }));
+});
+*/
+var devServer = new WebpackDevServer(compiler, {
+  contentBase: contentBase,
+  publicPath: config.output.publicPath,
+  hot: true
+});
+devServer.app.use(
+  path.join(config.output.publicPath, '_', 'node_modules'),
+  express['static'](path.resolve(__dirname, '../node_modules')));
+devServer.app.use(
+  '/dist',
+  express['static'](path.resolve(__dirname, '../src')));
+devServer.listen(port, 'localhost', function (err, result) {
+  if (err) {
+    console.log(err);
+  }
+  console.log('Listening at port ' + port);
+});
