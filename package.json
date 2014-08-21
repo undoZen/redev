@@ -7,6 +7,7 @@
     "redev": "bin/redev"
   },
   "files": [
+    "webpack.config.js",
     "bin/redev"
   ],
   "scripts": {
