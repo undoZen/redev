@@ -4,8 +4,8 @@ var path = require('path');
 module.exports = function (cwd, port) {
   return {
     entry: [
-      'webpack-dev-server/client?http://localhost:' + port,
-      'webpack/hot/dev-server',
+      path.resolve(__dirname, 'node_modules/webpack-dev-server/client?http://localhost:' + port),
+      path.resolve(__dirname, 'node_modules/webpack/hot/dev-server'),
       './src/client'
     ],
     output: {
@@ -21,10 +21,10 @@ module.exports = function (cwd, port) {
     },
     module: {
       loaders: [
-        { test: /\/src\/[^\/]+\/index.coffee$/, loaders: ['react-hot'] },
-        { test: /\.coffee$/, loaders: ['iced'] },
-        { test: /\.cx\.html$/, loaders: ['iced', 'chtmlx'] },
-        { test: /\.css$/, loaders: ['style', 'css'] }
+        { test: /\/src\/[^\/]+\/index.coffee$/, loaders: [path.resolve(__dirname, 'node_modules/react-hot-loader')] },
+        { test: /\.coffee$/, loaders: [path.resolve(__dirname, 'node_modules/iced-loader')] },
+        { test: /\.cx\.html$/, loaders: [path.resolve(__dirname, 'node_modules/iced-loader'), path.resolve(__dirname, 'node_modules/chtmlx')] },
+        { test: /\.css$/, loaders: [path.resolve(__dirname, 'node_modules/style-loader'), path.resolve(__dirname, 'node_modules/css-loader')] }
         //{ test: /\.css$/, loaders: ['style/url', 'file?context=src/&name=[path][name].[ext]#hash=[hash]'] }
       ]
     },
