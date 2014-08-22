@@ -10,7 +10,7 @@ module.exports = function (cwd, port) {
     ],
     output: {
       path: path.resolve(cwd, 'dist'),
-      filename: 'recomp.js',
+      filename: 'bundle.js',
       publicPath: '/dist/'
     },
     plugins: [
