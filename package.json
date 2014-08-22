@@ -1,6 +1,6 @@
 {
   "name": "redev",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "development tool for react, reflux, webpack",
   "main": "bin/redev",
   "bin": {
