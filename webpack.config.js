@@ -24,7 +24,8 @@ module.exports = function (cwd, port) {
         { test: /\/src\/[^\/]+\/index.coffee$/, loaders: [path.resolve(__dirname, 'node_modules/react-hot-loader')] },
         { test: /\.coffee$/, loaders: [path.resolve(__dirname, 'node_modules/iced-loader')] },
         { test: /\.cx\.html$/, loaders: [path.resolve(__dirname, 'node_modules/iced-loader'), path.resolve(__dirname, 'node_modules/chtmlx')] },
-        { test: /\.css$/, loaders: [path.resolve(__dirname, 'node_modules/style-loader'), path.resolve(__dirname, 'node_modules/css-loader')] }
+        { test: /\.css$/, loaders: [path.resolve(__dirname, 'node_modules/style-loader'), path.resolve(__dirname, 'node_modules/css-loader')] },
+        { test: /\.less$/, loaders: [path.resolve(__dirname, 'node_modules/style-loader'), path.resolve(__dirname, 'node_modules/css-loader'), path.resolve(__dirname, 'node_modules/less-loader')] }
         //{ test: /\.css$/, loaders: ['style/url', 'file?context=src/&name=[path][name].[ext]#hash=[hash]'] }
       ]
     },
