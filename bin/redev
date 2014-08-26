@@ -34,7 +34,7 @@ devServer.app.use(
   express['static'](path.join(cwd, 'node_modules')));
 devServer.app.use(
   '/dist',
-  express['static'](path.resolve(__dirname, '../src')));
+  express['static'](path.resolve(cwd, 'src')));
 devServer.listen(port, function (err, result) {
   if (err) {
     console.log(err);
