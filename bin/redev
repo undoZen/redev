@@ -76,8 +76,8 @@ if (target && targetPrefix) {
     "log level": 1
   });
   devServer.io.sockets.on("connection", function(socket) {
-    if(devServer.hot) socket.emit("hot");
-    if(!devServer._stats) return;
-    devServer._sendStats(socket, devServer._stats.toJson());
-  }.bind(this));
+    if(this.hot) socket.emit("hot");
+    if(!this._stats) return;
+    this._sendStats(socket, devServer._stats.toJson());
+  }.bind(devServer));
 }

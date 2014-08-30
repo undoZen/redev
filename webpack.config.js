@@ -4,7 +4,7 @@ var path = require('path');
 module.exports = function (cwd, port) {
   return {
     entry: [
-      path.resolve(__dirname, 'node_modules/webpack-dev-server/client?http://localhost:' + port),
+      path.resolve(__dirname, 'node_modules/webpack-dev-server/client')+'?http://localhost:' + port,
       path.resolve(__dirname, 'node_modules/webpack/hot/dev-server'),
       './src/client'
     ],
